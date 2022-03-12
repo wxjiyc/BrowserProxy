@@ -1,0 +1,164 @@
+/*!
+ *  Font Awesome 4.7.0 by @davegandy - http://fontawesome.io - @fontawesome
+ *  License - http://fontawesome.io/license (Font: SIL OFL 1.1, CSS: MIT License)
+ */
+@font-face {
+font-family:'FontAwesome';
+src:
+url('fonts/fontawesome-webfont.woff2?v=4.7.0')format('woff2'),
+url('fonts/fontawesome-webfont.woff?v=4.7.0')format('woff'),
+url('fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype');
+font-weight:normal;
+font-style:normal
+}
+.fa {
+ display:inline-block;
+ font-family: FontAwesome;
+ text-rendering:auto;
+ -webkit-font-smoothing:antialiased;
+ -moz-osx-font-smoothing:grayscale
+}
+.fa-trash-o:before {
+ content:"\f014"
+}
+.fa-pencil:before {
+ content:"\f040"
+}
+.fa-gear:before,.fa-cog:before {
+ content:"\f013"
+}
+.fa-server:before {
+ content:"\f233"
+}
+.fa-plus:before {
+ content:"\f067"
+}
+.fa-heart:before {
+  content: "\f004";
+}
+.fa-info-circle:before {
+  content: "\f05a";
+}
+.fa-power-off:before {
+  content: "\f011";
+}
+.fa-tasks:before {
+  content: "\f0ae";
+}
+.fa-thumbs-o-up:before {
+  content: "\f087";
+}
+.fa-thumbs-o-down:before {
+  content: "\f088";
+}
+.fa-thumb-tack:before {
+  content: "\f08d";
+}
+.fa-star:before {
+  content: "\f005";
+}
+.fa-tag:before {
+  content: "\f02b";
+}
+.fa-bolt:before {
+  content: "\f0e7";
+}
+.fa-globe:before {
+  content: "\f0ac";
+}
+.fa-heart-o:before {
+  content: "\f08a";
+}
+.fa-wifi:before {
+  content: "\f1eb";
+}
+.fa-heart:before {
+  content: "\f004";
+}
+
+.fa-flag:before {
+  content: "\f024";
+}
+.fa-youtube-play:before {
+  content: "\f16a";
+}
+.fa-download:before {
+  content: "\f019";
+}
+.fa-upload:before {
+  content: "\f093";
+}
+.fa-shield:before {
+  content: "\f132";
+}
+.fa-spinner:before {
+  content: "\f110";
+}
+.icon-map-marker:before {
+  content: "\f041";
+}
+.fa-arrow-left:before {
+  content: "\f060";
+}
+input[type='radio']{
+	display: none;
+}	
+input[type='radio']:checked + label{
+ color: black	;
+}
+.iconBox{
+	background: white;
+	width: 1.8em;
+	height: 1.6em;
+	transition: 1s ;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	top: 0;
+	box-shadow: 0 1px 2px lightgray;
+}
+.iconBox:hover{
+width: 5.4em;
+height: 7.2em;
+}
+.keepFlat{
+width: 5.4em;
+height: 7.2em;	
+}
+.iconBox:after{
+	content: '';
+	display: block;
+	clear: both;
+	width: 5.4em;
+}
+
+.keepFlat div{
+	text-align: center;
+	display: inline-block;
+	background: white;
+	/*padding: .3em;*/
+	width: 1.8em;
+	height: 1.8em;
+	line-height: 1.8em;
+	vertical-align: middle;
+	font-size: 1em;
+	float: left;
+	overflow: hidden;
+	color: #4e4e4e;
+}
+.keepFlat div:hover{
+	background: #f8f8f8;
+}
+.keepFlat div label{
+	cursor: pointer;
+	display: block;
+	line-height: 1.8em;
+	height: 1.8em;
+	font-size: 1em;
+}
+.keepFlat div label i {
+	margin:0!important;
+}
+.fa-question-circle:before {
+  content: "\f059";
+}

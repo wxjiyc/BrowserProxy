@@ -1,0 +1,20 @@
+[
+  {
+    "address": "172.17.0.3",
+    "nickname": "北京BGP-高速",
+    "username": "root",
+    "password": "browserproxyt1"
+  },
+  {
+    "address": "172.17.0.4",
+    "nickname": "上海BGP-高速",
+    "username": "root",
+    "password": "browserproxyt2"
+  },
+  {
+    "address": "172.17.0.5",
+    "nickname": "香港BGP-流媒体",
+    "username": "root",
+    "password": "browserproxyt3"
+  }
+]

@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Little Proxy Settings Page</title>
+	<link rel="stylesheet" type="text/css" href="css/mainStyle.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+			box-sizing: border-box;			
+		}
+		html{
+			background: white;	
+			height: 100%;	
+		}
+	
+		body{
+			background: white;
+			font-size: 1em;
+			height: 100%;
+		}
+
+		#wrapper{
+			width: 15em;
+			/*min-width: 15em;*/
+			min-height: 100%;
+			padding:.5em 0 2em 0;
+			font-size: 1em;
+			font-family: sans-serif;
+			position: relative;			
+			overflow: hidden;
+			background: white;
+		}
+		.optionsPanel{
+			position: absolute;
+			bottom: 0;
+			left: 0;
+			height: 2em;
+			line-height: 2em;
+			background: white;
+		}
+		.optionsPanel i{
+			vertical-align: middle;
+		}
+		.optionsPanel a{
+			vertical-align: middle;
+			color: inherit;
+			text-decoration: none;
+			font-size: .7em;
+		}
+		.optionsPanel a:hover{
+			text-decoration: underline;
+		}
+		.proxy{
+			background: transparent;
+			overflow: hidden;
+			height: 2em;
+			line-height: 2em;
+			font-size: 1em;
+			padding: 0em 1em;
+			position: relative;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		.proxy.active .proxyName{
+			color:  #d31b1b;
+		}
+		.proxy:hover{
+			background: #f0f0f0;
+		}
+		.proxyName{			
+			display: inline-block;
+			width: 100%;
+			/*margin-right: 4%;*/
+			vertical-align: middle;
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;			
+			cursor: pointer;
+			transition: all 300ms ease-in-out;
+		}
+		.proxyLinks{			
+			display: inline-block;
+			width: 20%;
+			vertical-align: middle;
+			transform: translateX(3em);
+			transition: transform 200ms ease-in-out;
+			/*background: #f0f0f0;*/
+		}
+		.proxy:hover .proxyLinks{
+			transform: translateX(0em);
+		}
+		.proxy:hover .proxyName{
+			width: 80%;
+			margin-right: 3%;
+		}		
+		#popUp::-webkit-scrollbar {
+		width: 6px;
+		background-color: #F5F5F5;
+		} 
+		#popUp::-webkit-scrollbar-thumb {
+			background-color: #000000;
+		}
+		#style-1::-webkit-scrollbar-track {
+			-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+			background-color: #F5F5F5;
+		}
+		#popUp{
+			word-wrap: break-word;
+			position: absolute;
+			top: 0;
+			left: 0;
+			height: 100%;
+			width: 100%;
+			padding: 1em;
+			background: rgb(249, 249, 249);
+			transform: translateX(-100%);
+			-webkit-transform: translateX(-100%);
+			-moz-transform: translateX(-100%);
+			-webkit-transition: 500ms ease-in-out;
+			-moz-transition: 500ms ease-in-out;
+			transition: 500ms ease-in-out;
+			white-space: nowrap;
+			z-index: 5;
+			overflow-x: hidden;
+			overflow-y: auto;
+		}
+		#popUp:after{
+			display: inline-block;
+			height: 100%;
+			content:'';
+			vertical-align: middle;
+		}
+		.showForm{
+			-webkit-transform: translateX(0em)!important;
+			-moz-transform: translateX(0em)!important;
+			transform: translateX(0em)!important;
+		}
+		#popUp .aligner> div{
+			display: none;
+		}
+		input ,select ,textarea{
+			width: 100%;
+			padding: .3em 1em;
+			border: 0;
+			background: #fff;
+			margin: .2em 0;
+			font-size: 0.89rem;
+			box-shadow: 0 0px 2px lightgray;
+		}
+		textarea{
+			padding: .3em;
+		}
+		input:focus ,select:focus{
+			box-shadow: 0 1px 2px lightgray;
+		}
+		input:hover ,select:hover{
+			background: #f9f9f9;
+		}
+		label{
+			vertical-align: middle;
+		}
+		input[type=checkbox]{
+			display: inline-block;
+			vertical-align: middle;
+			width: auto;
+			box-shadow: 0 0px 2px lightgray;
+			border: 0;
+		}
+		input[type=button],input[type=submit]{
+			width: 50%;
+		}
+		i{
+			text-decoration: none;
+			font-style: normal;
+			display: inline-block;
+			vertical-align: middle;
+			margin-right:0.3em;
+			cursor: pointer;
+			font-size:1.1em ;
+			transition: 1s all; 
+			opacity: .8;
+		}
+		i:hover{
+			color: red;
+			opacity: 1;
+		}
+		textarea{
+			height: 3em;
+			width: 100%;
+		}
+		.proxyIP{
+			width: 68%;
+		}
+		.proxyPort{
+			width: 30%;
+			padding: .3em;
+		}
+		.pr{
+			width: 2%;
+			display: inline-block;
+		}
+		.proxyType,.proxyTypeLable{
+			width: 50%;
+			display: inline-block;			
+		}
+		.optionsPanel{
+			padding: 0 1em;
+		}
+		h1{
+			font-weight: normal;
+			font-size: 1.5em;
+			color: #7c7c7c;
+			padding:  .2em 0 ;
+			line-height: 1.2;
+		}
+
+		p{
+			line-height: 1.5;
+			/*padding: .1em 0  ;*/
+		}
+		.aligner p ,.aligner label ,.aligner li {
+			font-size: .9em;
+			vertical-align: middle;
+		}
+		
+		.aligner{
+			display: inline-block;
+			vertical-align: middle;
+			white-space: normal;
+			width: 100%;
+		}
+		#iconsHolder{
+			/*padding: .2em 0;*/
+			text-align: justify;
+		}
+		img{
+			max-width: 100%;
+			height: auto;
+			vertical-align: middle;
+		}
+		.pIcon{
+			display: inline-block;
+			width: 2em;
+			height: 2em;
+			padding: .2em;
+		}
+		.pIcon:hover{
+			background: #efefef;
+		}
+		.pIcon img{
+			cursor: pointer;
+		}
+		#addProxyName,#editProxyName{
+			width: 82%;
+		}
+		.iconBocHolder{
+			width: 15%;
+			height: 1.6em;
+			display: inline-block;
+			vertical-align: middle;
+			position: relative;
+			margin: .2em 3% .2em  0;
+		}
+		.dropHere{
+			
+					
+		}
+		.dropHere:after{
+			content: 'Drop Here';
+			position: absolute;
+			color: #e08585;
+			width: 100%;
+			height: 100%;
+			left: 0;
+			top: 0;
+			text-align: center;
+			line-height: 2;
+			background: #f9f9f9;
+			opacity: .9;
+		}
+		.pRules li{
+			margin-left: 1em;
+		}
+		#noProxyinfo{
+			cursor: help;
+		}
+		.toRight{
+			float: right;
+		}
+		.toLeft{
+			float: left;
+		}
+		.clearFix {
+			line-height: 2.1rem;
+		}
+		.clearFix:after{
+			content: "";
+			display: block;
+			clear: both;
+		}
+		.halfWidth{
+			width: 50%;
+			display: inline-block;
+			vertical-align: middle;
+			white-space: nowrap;
+			overflow: hidden;
+		}
+		#ipPanel{
+			text-align: center;
+		}
+		#ipDisp{
+			font-size: 1.8em;
+		}
+		#displayProxies{
+			max-height: 30em;
+			overflow: auto;
+			min-height: 15em;
+		}
+		.iconsBoxy{
+			text-align: right;
+		}
+		#countryDisp{
+			font-size: 1.1em;
+		}
+		.sAnimate{
+			animation: 3s rotate reverse infinite linear;
+			-webkit-animation: 3s rotate reverse infinite linear;
+			font-size: 0.8em !important;
+			vertical-align: middle;			
+		}
+		@keyframes rotate{
+			0%{
+				transform: rotate(0);
+			}
+			100%{
+				transform: rotate(360deg);
+			}
+		}		
+		@-webkit-keyframes rotate{
+			0%{
+				-webkit-transform: rotate(0);
+			}
+			100%{
+				-webkit-transform: rotate(360deg);
+			}
+		}
+
+		body.touchMode {
+		    font-size: 1.2em;
+		}
+		body.touchMode  .proxyName {
+			width: 80%;
+			margin-right: 3%;
+		}
+		body.touchMode .proxyLinks {
+			transform: translateX(0);
+		}
+		body.touchMode i {
+			font-size: 1.5em ;
+		}
+		body.touchMode .keepFlat i {
+			font-size: 1em ;
+		}
+		body.touchMode .keepFlat {
+			width: 6.4em;
+		}
+		body.touchMode #wrapper {
+			width: 100%;
+		}
+		body.touchMode #displayProxies {
+			max-height: unset;
+			overflow: auto;
+			min-height: auto;
+		}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+	<div id="displayProxies"></div>
+
+	<div id="popUp">
+	<div class="aligner">
+		<div id="popUpContent"></div>
+		<div id="popUpFormAddProxy">
+			<h1>Add Proxy</h1>
+			<form action="" method="POST">
+			<div>
+				<div class="iconBocHolder">
+				<div class="iconBox">
+					<div class="keepFlat">
+					
+						<div>
+							<input type="radio" id="fa-tasks" name="addIcons" value="fa-tasks" checked>
+							<label for="fa-tasks">
+								<i class="fa fa-tasks" aria-hidden="true"></i>
+							</label>	
+						</div>
+
+						<div>
+							<input type="radio" id="fa-heart" name="addIcons" value="fa-heart">
+							<label for="fa-heart">
+								<i class="fa fa-heart" ></i>
+							</label>
+						</div>
+
+						<div>
+							<input type="radio" id="fa-globe" name="addIcons" value="fa-globe">
+							<label for="fa-globe">
+								<i class="fa fa-globe" aria-hidden="true"></i>
+							</label>
+						</div>
+				
+
+						<div>
+							<input type="radio" id="fa-thumb-tack" name="addIcons" value="fa-thumb-tack">
+							<label for="fa-thumb-tack">
+								<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+							</label>
+						</div>
+
+						<div>
+							<input type="radio" id="fa-star" name="addIcons" value="fa-star">
+							<label for="fa-star">
+								<i class="fa fa-star" aria-hidden="true"></i>
+							</label>
+						</div>
+
+						<div>
+							<input type="radio" id="fa-tag" name="addIcons" value="fa-tag">
+							<label for="fa-tag">
+								<i class="fa fa-tag" aria-hidden="true"></i>
+							</label>
+						</div>
+
+
+
+						<div>
+							<input type="radio" id="fa-bolt" name="addIcons" value="fa-bolt">
+							<label for="fa-bolt">
+								<i class="fa fa-bolt" aria-hidden="true"></i>
+								</label>
+						</div>
+
+						<div>
+							<input type="radio" id="fa-wifi" name="addIcons" value="fa-wifi">
+							<label for="fa-wifi">
+								<i class="fa fa-wifi" aria-hidden="true"></i>
+							</label>
+						</div>
+
+						<div>
+							<input type="radio" id="fa-flag" name="addIcons" value="fa-flag">
+							<label for="fa-flag">
+								<i class="fa fa-flag" aria-hidden="true"></i>
+							</label>
+						</div>
+
+
+
+						<div>
+							<input type="radio" id="fa-thumbs-o-up" name="addIcons" value="fa-thumbs-o-up">
+							<label for="fa-thumbs-o-up">
+								<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+							</label>
+						</div>
+
+						<div>
+							<input type="radio" id="fa-thumbs-o-down" name="addIcons" value="fa-thumbs-o-down">
+							<label for="fa-thumbs-o-down">
+							<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+
+							</label>
+						</div>
+
+						<div>
+							<input type="radio" id="fa-youtube-play" name="addIcons" value="fa-youtube-play">
+							<label for="fa-youtube-play">
+							<i class="fa fa-youtube-play" aria-hidden="true"></i>
+							</label>
+						</div>
+					</div>
+				</div>
+				</div><input autocomplete="off"  type="text" id="addProxyName" placeholder="Proxy Name (Optional)">
+			</div>
+			<p>
+				<input autofocus autocomplete="off" type="text" id="addProxyIP" placeholder="Proxy IP" class="proxyIP"><span class="pr">:</span><input autocomplete="off" type="text" id="addProxyPort" placeholder="Port" class="proxyPort">
+			</p>
+			<p>
+				<label for="addProxyType" class="proxyTypeLable">Proxy Type:</label><select id="addProxyType" class="proxyType">
+					<option selected="true" value="http">HTTP</option>
+					<option value="https">HTTPS</option>
+					<option value="socks4">SOCKS V4</option>
+					<option value="socks">SOCKS V5</option>
+				</select>
+			</p>
+			<p>
+				<input type="submit" id="addProxySave" value="Add"><input type="button" class="cancelBut"  value="Cancel">
+			</p>
+			</form>
+		</div>
+		<div id="popUpFormEditProxy">
+			<h1>Eddit</h1>
+			<form action="" method="POST">
+			<div>
+				<div class="iconBocHolder">
+					<div class="iconBox">
+						<div class="keepFlat">
+							<div>
+								<input type="radio" id="edit-fa-tasks" name="edditIcons" value="fa-tasks">
+								<label for="edit-fa-tasks">
+									<i class="fa fa-tasks" aria-hidden="true"></i>
+								</label>	
+							</div>
+
+							<div>
+								<input type="radio" id="edit-fa-heart" name="edditIcons" value="fa-heart">
+								<label for="edit-fa-heart">
+									<i class="fa fa-heart" ></i>
+								</label>
+							</div>
+
+							<div>
+								<input type="radio" id="edit-fa-globe" name="edditIcons" value="fa-globe">
+								<label for="edit-fa-globe">
+									<i class="fa fa-globe" aria-hidden="true"></i>
+								</label>
+							</div>
+
+
+
+							<div>
+								<input type="radio" id="edit-fa-thumb-tack" name="edditIcons" value="fa-thumb-tack">
+								<label for="edit-fa-thumb-tack">
+									<i class="fa fa-thumb-tack" aria-hidden="true"></i>
+								</label>
+							</div>
+
+							<div>
+								<input type="radio" id="edit-fa-star" name="edditIcons" value="fa-star">
+								<label for="edit-fa-star">
+									<i class="fa fa-star" aria-hidden="true"></i>
+								</label>
+							</div>
+
+							<div>
+								<input type="radio" id="edit-fa-tag" name="edditIcons" value="fa-tag">
+								<label for="edit-fa-tag">
+									<i class="fa fa-tag" aria-hidden="true"></i>
+								</label>
+							</div>
+
+
+							<div>
+								<input type="radio" id="edit-fa-bolt" name="edditIcons" value="fa-bolt">
+								<label for="edit-fa-bolt">
+									<i class="fa fa-bolt" aria-hidden="true"></i>
+									</label>
+							</div>
+
+							<div>
+								<input type="radio" id="edit-fa-wifi" name="edditIcons" value="fa-wifi">
+								<label for="edit-fa-wifi">
+									<i class="fa fa-wifi" aria-hidden="true"></i>
+								</label>
+							</div>
+
+							<div>
+								<input type="radio" id="edit-fa-flag" name="edditIcons" value="fa-flag">
+								<label for="edit-fa-flag">
+									<i class="fa fa-flag" aria-hidden="true"></i>
+								</label>
+							</div>
+
+
+
+							<div>
+								<input type="radio" id="edit-fa-thumbs-o-up" name="edditIcons" value="fa-thumbs-o-up">
+								<label for="edit-fa-thumbs-o-up">
+									<i class="fa fa-thumbs-o-up" aria-hidden="true"></i>
+								</label>
+							</div>
+
+							<div>
+								<input type="radio" id="edit-fa-thumbs-o-down" name="edditIcons" value="fa-thumbs-o-down">
+								<label for="edit-fa-thumbs-o-down">
+								<i class="fa fa-thumbs-o-down" aria-hidden="true"></i>
+
+								</label>
+							</div>
+
+							<div>
+								<input type="radio" id="edit-fa-youtube-play" name="edditIcons" value="fa-youtube-play">
+								<label for="edit-fa-youtube-play">
+								<i class="fa fa-youtube-play" aria-hidden="true"></i>
+								</label>
+							</div>
+						</div>
+					</div>
+				</div><input autocomplete="off" type="text" id="editProxyName" placeholder="Proxy Name">
+			</div>
+			<p>
+				<input autocomplete="off" type="text" id="editProxyIP" placeholder="Proxy IP" class="proxyIP"><span class="pr">:</span><input autocomplete="off" type="text" id="editProxyPort" placeholder="Port" class="proxyPort">
+			</p>
+			<p>
+			<label for="editProxyType" class="proxyTypeLable">Proxy Type:</label><select id="editProxyType"  class="proxyType">
+					<option value="http">HTTP</option>
+					<option value="https">HTTPS</option>
+					<option value="socks4">SOCKS V4</option>
+					<option value="socks">SOCKS V5</option>
+				</select>
+			</p>
+			<p>
+				<input type="submit" id="editProxySave" value="Save"><input type="button" class="cancelBut"  value="Cancel">
+			</p>
+			</form>
+		</div>
+		<div id="settingsForm">
+			
+			<h1>Settings</h1>
+			<form action="" method="POST">
+			<p>
+			<label for="ristrictedSites">No Proxy For: </label><i id="noProxyinfo"  class="fa fa-question-circle"></i>
+			<textarea spellcheck="false" id="ristrictedSites"></textarea>
+			</p>
+			<p style="display: none;">
+			<label for="themeSelect">Theme:</label>
+			<select id="themeSelect"  class="proxyType">
+					<option value="default">Default</option>
+					<!-- <option value="blue">Blue</option> -->
+			</select>
+			</p>
+			<div id="iconsHolder" ><label class="halfWidth">Icon Color:</label><div class="halfWidth iconsBoxy">
+					<div class="pIcon" title="For Light Themes" id="lightIconLink">
+						<img src="icons/p.png" data-ic="light" >
+					</div><div class="pIcon" title="For Dark Themes"  id="darkIconLink" >
+						<img src="icons/p-dark.png" data-ic="dark">
+					</div><div class="pIcon" title="Blue"  id="blueIconLink">
+						<img src="icons/p-blue.png" data-ic="blue">
+					</div>
+				</div>
+			</div>
+			<p>
+				<label for="autoHideCheck">Auto Hide Little Proxy:</label>
+				<input type="checkbox" id="autoHideCheck">
+			</p>
+			<p>
+			<input type="submit" id="settingsSaveBut" value="Save"><input  type="button" class="cancelBut"  value="Cancel">
+			</p>
+			</form>
+		</div>
+		<div id="importPanel">
+			<h1>Import Proxy List</h1>
+			<p>Just Copy And Paste! <i id="importinfo"  class="fa fa-question-circle"></i></p>
+			<form action="#">
+				<textarea id="importArea"></textarea>
+				<p >
+					<label for="importProxyType" class="halfWidth">Proxies Type: </label><select id="importProxyType" class="proxyType halfWidth">
+					<option selected="true" value="http">HTTP</option>
+					<option value="https">HTTPS</option>
+					<option value="socks4">SOCKS V4</option>
+					<option value="socks">SOCKS V5</option>
+				</select>
+
+				</p>
+				<p>
+					<input type="button" id="importBut" value="Import"><input type="button" class="cancelBut"  value="Cancel">
+				</p>
+			</form>
+		</div>
+		<div id="ipPanel">
+			<h1 id="ipDisp">-</h1>
+			<h1 id="countryDisp">-</h1><br><br>
+			<p class="cancelBut" style="cursor: pointer;"><i class="fa fa-arrow-left cancelBut" ></i>OK</p>
+		</div>
+	</div>
+	</div>
+	<div class="optionsPanel">
+		<i id="addProxyLink" title="Add A New Proxy" class="fa fa-plus"></i>
+		<i id="settingsLink" title="Settings" class="fa fa-cog"></i>
+	</div>
+</div>
+
+<script type="text/javascript" src="js/js.js"></script>
+</body>
+</html>

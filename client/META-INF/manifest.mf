@@ -1,0 +1,77 @@
+Manifest-Version: 1.0
+
+Name: manifest.json
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: /w1OwH/9EeGzecM2IruITg==
+SHA1-Digest: 2ewR3950wiNJRcW6Kjbeh/8UrBA=
+
+Name: settings.htm
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: saxWY++fzBhUoHdlRNn2BQ==
+SHA1-Digest: kY2Gm7Fk3UObYy90LrGiCj7MDsM=
+
+Name: css/mainStyle.css
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +YfvHFtsQ8Z4q/lbtlyzLQ==
+SHA1-Digest: rLYhgL3Sfy6slWEn/ITSFkzUF34=
+
+Name: css/fonts/fontawesome-webfont.ttf
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: sGhx8oH+5rJB1gWCrpNpuQ==
+SHA1-Digest: E7HqtlqYPHpzvHmXxHnWaUP3xss=
+
+Name: css/fonts/fontawesome-webfont.woff
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: /uZucSqKCO71gFpGiSkyrQ==
+SHA1-Digest: KLeCJAs+dtuCThLAJ1SpcxoWdSc=
+
+Name: css/fonts/fontawesome-webfont.woff2
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: r3rlBanu1QP4uOaYIDaHPg==
+SHA1-Digest: 1vSMun0Hb7by/Wupk6dbncHsvww=
+
+Name: icons/p-blue.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: FZz3YvAIxymLoJa0nQZvyA==
+SHA1-Digest: HeiAqyi6DJgYwRwSidcZSJoT2B0=
+
+Name: icons/p-dark.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: SJMJ94M2M8eWBNHdTIFSsw==
+SHA1-Digest: OiGYSDelvCexad0TsdqPQOSnneQ=
+
+Name: icons/p-disconnected-blue.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: +FuIvpH9aqYL+GRQ9CId9A==
+SHA1-Digest: bUwJj8B4Gd+1NYyKjkWKJh7q81o=
+
+Name: icons/p-disconnected-dark.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: SiIKPofVjdnwj4BWDAv+1Q==
+SHA1-Digest: rLZcitPMnam1rVEKeM+phwlwIVI=
+
+Name: icons/p-disconnected.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: H6ucQCD0o7WDih6HSyALGw==
+SHA1-Digest: 0l+YlEiltrAv0aV9Uk2cGiIavHA=
+
+Name: icons/p.png
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: UR8A3+jW8abpJncZfDiqow==
+SHA1-Digest: Mp4nJn+b0NT+VRwbccBlx8uWDTs=
+
+Name: js/bg.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: LHwzrMMpNJb05IsclJYd6Q==
+SHA1-Digest: 0ZNKulzBYXAyPfSLKIwZqNe9Q4Y=
+
+Name: js/firefoxProxy.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: 1GsYjoyjJhg8m5gFhTcVrw==
+SHA1-Digest: JDi6QQ34Nnhpt2gbPt9DL2DKVsE=
+
+Name: js/js.js
+Digest-Algorithms: MD5 SHA1
+MD5-Digest: dzk8ZJyTYg+1snbq0JuJDA==
+SHA1-Digest: 0iS7mxN66UBevEtZsVHvpNFztHg=
+

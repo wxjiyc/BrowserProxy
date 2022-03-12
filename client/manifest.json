@@ -1,0 +1,34 @@
+{
+
+  "manifest_version": 2,
+  "name": "BrowserProxyClient",
+  "version": "1.0",
+  "author": "code666",
+  "description": "A tool for managing proxy settings",
+
+  "icons": {
+    "200": "icons/p.png"
+  },
+
+  "applications": {
+    "gecko": {
+      "id": "code666@code666.tk",
+        "strict_min_version": "91.1.0"
+    }
+  },
+
+  "permissions": [
+    "activeTab",
+    "proxy",
+    "storage",
+    "webRequest",
+		"<all_urls>"
+  ],
+
+  "browser_action": {
+    "default_icon": "icons/p.png",
+    "default_title": "My Proxies",
+    "default_popup": "settings.htm"
+  }
+
+}
