@@ -6,6 +6,7 @@ import (
 	"net"
 	"os/exec"
 	"strconv"
+	"syscall"
 )
 
 // 结构体，定义返回给客户端的数据
@@ -42,7 +43,8 @@ func CreateSSHSocks5Tunnel(address, username, password string) int {
 	cmd := "sshpass -p '" + password + "' ssh -fND 0.0.0.0:" + strconv.Itoa(port) + " " + username + "@" + address + " -o StrictHostKeyChecking=no"
 	// 执行
 	c := exec.Command("bash", "-c", cmd)
-	if err = c.Run(); err != nil {
+	c.SysProcAttr = &syscall.SysProcAttr{Setpgid: true}
+	if err = c.Start(); err != nil {
 		fmt.Println("Run ssh error", err.Error())
 	}
 	return port
