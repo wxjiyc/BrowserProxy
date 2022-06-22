@@ -24,13 +24,13 @@ jobs:
       - name: Copy files
         run: |
           mkdir ./artifacts
-          mv ./server ./BrowserProxy
-          cp ./BrowserProxy ./artifacts
-          cp ./config.ini ./artifacts
-          cp ./sshlist.json ./artifacts
+          mv ./server/server ./server/BrowserProxy
+          cp ./server/BrowserProxy ./artifacts
+          cp ./server/config.ini ./artifacts
+          cp ./server/sshlist.json ./artifacts
           chmod -R 777 ./artifacts
       - name: Archive artifacts
         uses: actions/upload-artifact@v1
         with:
           name: BrowserProxy-linux-amd64
-          path: /home/runner/work/BrowserProxy/BrowserProxy/server/artifacts
+          path: /home/runner/work/BrowserProxy/BrowserProxy/artifacts
